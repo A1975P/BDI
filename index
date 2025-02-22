@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário Online</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .question { margin-bottom: 15px; }
+        button { margin-top: 20px; padding: 10px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h2>Questionário de Bem-Estar</h2>
+    <form id="quizForm">
+        <div class="question">
+            <p>A. Tristeza</p>
+            <label><input type="radio" name="A" value="0"> Não me sinto triste.</label><br>
+            <label><input type="radio" name="A" value="1"> Sinto-me triste muitas vezes.</label><br>
+            <label><input type="radio" name="A" value="2"> Sinto-me sempre triste.</label><br>
+            <label><input type="radio" name="A" value="3"> Estou tão triste ou infeliz que já não aguento.</label>
+        </div>
+        
+        <div class="question">
+            <p>B. Pessimismo</p>
+            <label><input type="radio" name="B" value="0"> Não me sinto desencorajado em relação ao futuro.</label><br>
+            <label><input type="radio" name="B" value="1"> Sinto-me mais desencorajado em relação ao futuro do que antes.</label><br>
+            <label><input type="radio" name="B" value="2"> Já não espero que os meus problemas se resolvam.</label><br>
+            <label><input type="radio" name="B" value="3"> Não tenho qualquer esperança no futuro; tudo só pode piorar.</label>
+        </div>
+        
+        <button type="button" onclick="calcularPontuacao()">Ver Resultado</button>
+    </form>
+    
+    <h3 id="resultado"></h3>
+    
+    <script>
+        function calcularPontuacao() {
+            let total = 0;
+            let respostas = document.querySelectorAll('input[type="radio"]:checked');
+            respostas.forEach(resposta => {
+                total += parseInt(resposta.value);
+            });
+            document.getElementById('resultado').innerText = 'Pontuação Total: ' + total;
+        }
+    </script>
+</body>
+</html>
